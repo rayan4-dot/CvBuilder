@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Progress overview</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-gray-100 font-sans">
+
+    <!-- header  -->
+    <header class="bg-red-500 p-6 text-center">
+        <h1 class="text-white text-3xl font-semibold">CV Builder</h1>
+        <div class="mt-4 flex justify-center space-x-4">
+            <div class="bg-white rounded-full p-3 text-green-500">
+                <span>&#x1F464;</span>
+            </div>
+            <div class="w-1/3 h-2 bg-gray-300 rounded">
+                <div class="h-full bg-blue-500 rounded" style="width: 21%;"></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- progress -->
+    <section class="bg-red-500 p-4">
+        <h2 class="text-white text-xl font-bold text-center">Education</h2>
+        <div class="flex justify-center mt-4 space-x-6">
+            <div class="flex items-center space-x-2">
+                <div class="bg-blue-600 w-8 h-8 rounded-full flex items-center justify-center text-white font-semibold">1</div>
+                <div class="w-16 h-1 bg-blue-600"></div>
+            </div>
+            <div class="flex items-center space-x-2">
+                <div class="bg-blue-600 w-8 h-8 rounded-full flex items-center justify-center text-white font-semibold">2</div>
+                <div class="w-16 h-1 bg-blue-600"></div>
+            </div>
+            <div class="flex items-center space-x-2">
+                <div class="bg-blue-600 w-8 h-8 rounded-full flex items-center justify-center text-white font-semibold">3</div>
+                <div class="w-16 h-1 bg-blue-600"></div>
+            </div>
+            <div class="flex items-center space-x-2">
+                <div class="bg-gray-300 w-8 h-8 rounded-full flex items-center justify-center text-gray-500">4</div>
+                <div class="w-16 h-1 bg-gray-300"></div>
+            </div>
+            <div class="flex items-center space-x-2">
+                <div class="bg-gray-300 w-8 h-8 rounded-full flex items-center justify-center text-gray-500">5</div>
+                <div class="w-16 h-1 bg-gray-300"></div>
+            </div>
+            <div class="flex items-center space-x-2">
+                <div class="bg-gray-300 w-8 h-8 rounded-full flex items-center justify-center text-gray-500">6</div>
+                <div class="w-16 h-1 bg-gray-300"></div>
+            </div>
+            <div class="flex items-center space-x-2">
+                <div class="bg-gray-300 w-8 h-8 rounded-full flex items-center justify-center text-gray-500">7</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- form section -->
+    <main class="max-w-3xl mx-auto bg-white shadow-md rounded-lg p-6 mt-8">
+        <!-- Education Form -->
+        <div class="mt-8">
+            <div class="cv-form-blk">
+                <!-- Education Title -->
+                <div class="cv-form-row-title mb-4">
+                    <h3 class="text-xl font-semibold text-gray-700">Education</h3>
+                </div>
+
+                <!-- Education  -->
+                <div class="row-separator repeater">
+                    <div class="repeater" data-repeater-list="group-c">
+                        <div data-repeater-item>
+                            <div class="cv-form-row cv-form-row-experience grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                                <!-- Column 1: School, Degree, City -->
+                                <div class="space-y-4">
+                                    <div class="form-elem">
+                                        <label for="edu_school" class="block text-sm font-medium text-gray-700">School</label>
+                                        <input name="edu_school" type="text" id="edu_school" class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                        <span class="form-text text-sm text-red-500"></span>
+                                    </div>
+                                    <div class="form-elem">
+                                        <label for="edu_degree" class="block text-sm font-medium text-gray-700">Degree</label>
+                                        <input name="edu_degree" type="text" id="edu_degree" class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                        <span class="form-text text-sm text-red-500"></span>
+                                    </div>
+                                    <div class="form-elem">
+                                        <label for="edu_city" class="block text-sm font-medium text-gray-700">City</label>
+                                        <input name="edu_city" type="text" id="edu_city" class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                        <span class="form-text text-sm text-red-500"></span>
+                                    </div>
+                                </div>
+
+                                <!-- Column 2: Start Date, Graduation Date, Description -->
+                                <div class="space-y-4">
+                                    <div class="form-elem">
+                                        <label for="edu_start_date" class="block text-sm font-medium text-gray-700">Start Date</label>
+                                        <input name="edu_start_date" type="date" id="edu_start_date" class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                        <span class="form-text text-sm text-red-500"></span>
+                                    </div>
+                                    <div class="form-elem">
+                                        <label for="edu_graduation_date" class="block text-sm font-medium text-gray-700">Graduation Date</label>
+                                        <input name="edu_graduation_date" type="date" id="edu_graduation_date" class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                        <span class="form-text text-sm text-red-500"></span>
+                                    </div>
+                                    <div class="form-elem">
+                                        <label for="edu_description" class="block text-sm font-medium text-gray-700">Description</label>
+                                        <input name="edu_description" type="text" id="edu_description" class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                        <span class="form-text text-sm text-red-500"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center mt-6">
+                        <a href="form.html" class="bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 focus:outline-none ">&lt Back</a>
+                        <a href="skill.html" class="bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 focus:outline-none">Next Step &gt; </a>
+                    </div>                </div>
+            </div>
+        </div>
+
+    </main>
+
+</body>
+<script src="cvbuilder.js"></script>
+
+</html>
+
+
+
+
