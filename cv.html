@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV Builder</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="bg-gray-100 p-8">
+    <div class="max-w-8xl mx-auto bg-white p-6 rounded-lg shadow-lg">
+        <h1 class="text-3xl font-semibold text-center mb-6">Make your Resume</h1>
+
+        <!-- Progress Bar -->
+        <div class="flex justify-center mb-6">
+            <div class="flex items-center space-x-4">
+                <div id="step-1-indicator" class="w-8 h-8 flex items-center justify-center rounded-full text-lg font-semibold bg-gray-300 text-white">1</div>
+                <div id="line-1" class="w-12 h-1 bg-gray-300"></div>
+                <div id="step-2-indicator" class="w-8 h-8 flex items-center justify-center rounded-full text-lg font-semibold bg-gray-300 text-white">2</div>
+                <div id="line-2" class="w-12 h-1 bg-gray-300"></div>
+                <div id="step-3-indicator" class="w-8 h-8 flex items-center justify-center rounded-full text-lg font-semibold bg-gray-300 text-white">3</div>
+                <div id="line-3" class="w-12 h-1 bg-gray-300"></div>
+                <div id="step-4-indicator" class="w-8 h-8 flex items-center justify-center rounded-full text-lg font-semibold bg-gray-300 text-white">4</div>
+                <div id="line-4" class="w-12 h-1 bg-gray-300"></div>
+                <div id="step-5-indicator" class="w-8 h-8 flex items-center justify-center rounded-full text-lg font-semibold bg-gray-300 text-white">5</div>
+                <div id="line-5" class="w-12 h-1 bg-gray-300"></div>
+                <div id="step-6-indicator" class="w-8 h-8 flex items-center justify-center rounded-full text-lg font-semibold bg-gray-300 text-white">6</div>
+                <div id="line-6" class="w-12 h-1 bg-gray-300"></div>
+                <div id="step-7-indicator" class="w-8 h-8 flex items-center justify-center rounded-full text-lg font-semibold bg-gray-300 text-white">7</div>
+                <div id="line-7" class="w-12 h-1 bg-gray-300"></div>
+                <div id="step-8-indicator" class="w-8 h-8 flex items-center justify-center rounded-full text-lg font-semibold bg-gray-300 text-white">8</div>
+            </div>
+        </div>
+
+        <div id="cv-form" class="max-w-2xl mx-auto bg-white rounded-lg shadow-md p-6">
+            <!-- Step 1: Personal Information -->
+            <div class="step" id="step1">
+                <h2 class="text-4xl font-bold border-b-2 border-gray-700 pb-2">Informations personnelles</h2>
+                <input type="text" id="name" placeholder="Nom" required class="border border-gray-300 rounded p-2 w-full mb-4">
+                <input type="text" id="role" placeholder="Role (student, intern)" class="border border-gray-300 rounded p-2 w-full mb-4">
+                <input type="email" id="email" placeholder="Email" required class="border border-gray-300 rounded p-2 w-full mb-4">
+                <input type="tel" id="phone" placeholder="Téléphone" required class="border border-gray-300 rounded p-2 w-full mb-4">
+                <button type="button" id="nextBtn1" class="bg-blue-500 text-white rounded p-2 hover:bg-blue-600">Suivant</button>
+            </div>
+
+            <!-- Step 2: Job Title and Profile Summary -->
+            <div class="step hidden" id="step2">
+                <h2 class="text-2xl font-bold border-b-2 border-gray-700 pb-2">Poste et Résumé</h2>
+                <input type="text" id="job-title" placeholder="Titre du poste" required class="border border-gray-300 rounded p-2 w-full mb-4">
+                <textarea id="profile-summary" placeholder="Résumé de profil" required class="border border-gray-300 rounded p-2 w-full mb-4"></textarea>
+
+                <!-- Links Input Section -->
+                <h2 class="text-2xl font-bold border-b-2 border-gray-700 pb-2">Liens</h2>
+                <input type="url" id="github-link" placeholder="GitHub (URL)" class="border border-gray-300 rounded p-2 w-full mb-2">
+                <input type="url" id="linkedin-link" placeholder="LinkedIn (URL)" class="border border-gray-300 rounded p-2 w-full mb-2">
+                
+                <button type="button" id="prevBtn1" class="bg-gray-500 text-white rounded p-2 hover:bg-gray-600">Précédent</button>
+                <button type="button" id="nextBtn2" class="bg-blue-500 text-white rounded p-2 hover:bg-blue-600">Suivant</button>
+            </div>
+
+            <!-- Step 3: Experience -->
+            <div class="step hidden" id="step3">
+                <h2 class="text-2xl font-bold border-b-2 border-gray-700 pb-2">Expérience professionnelle</h2>
+                <div id="experience-list" class="mb-4">
+                    <div class="experience-entry mb-4">
+                        <input type="text" placeholder="Entreprise" required class="border border-gray-300 rounded p-2 w-full mb-2">
+                        <input type="text" placeholder="Lieu" required class="border border-gray-300 rounded p-2 w-full mb-2">
+                        <div class="date-input">
+                            <select class="border border-gray-300 rounded p-2 w-full mb-2" required>
+                                <option value="" disabled selected>Mois Début</option>
+                                <option value="January">Janvier</option>
+                                <option value="February">Février</option>
+                                <option value="March">Mars</option>
+                                <option value="April">Avril</option>
+                                <option value="May">Mai</option>
+                                <option value="June">Juin</option>
+                                <option value="July">Juillet</option>
+                                <option value="August">Août</option>
+                                <option value="September">Septembre</option>
+                                <option value="October">Octobre</option>
+                                <option value="November">Novembre</option>
+                                <option value="December">Décembre</option>
+                            </select>
+                            <input type="number" min="1997" max="2026" placeholder="Année" class="border border-gray-300 rounded p-2 w-full mb-2" required>
+                        </div>
+                        <div class="date-input">
+                            <select class="border border-gray-300 rounded p-2 w-full mb-2" required>
+                                <option value="" disabled selected>Mois Fin</option>
+                                <option value="January">Janvier</option>
+                                <option value="February">Février</option>
+                                <option value="March">Mars</option>
+                                <option value="April">Avril</option>
+                                <option value="May">Mai</option>
+                                <option value="June">Juin</option>
+                                <option value="July">Juillet</option>
+                                <option value="August">Août</option>
+                                <option value="September">Septembre</option>
+                                <option value="October">Octobre</option>
+                                <option value="November">Novembre</option>
+                                <option value="December">Décembre</option>
+                            </select>
+                            <input type="number" min="1997" max="2026" placeholder="Année" class="border border-gray-300 rounded p-2 w-full mb-2" required>
+                        </div>
+                        <textarea placeholder="Description" required class="border border-gray-300 rounded p-2 w-full mb-2"></textarea>
+                        <button type="button" class="remove-experience bg-red-500 text-white rounded p-2 hover:bg-red-600">Supprimer</button>
+                    </div>
+                </div>
+                <button type="button" id="add-experience" class="bg-green-500 text-white rounded p-2 hover:bg-green-600">Ajouter une expérience</button>
+                <button type="button" id="prevBtn2" class="bg-gray-500 text-white rounded p-2 hover:bg-gray-600">Précédent</button>
+                <button type="button" id="nextBtn3" class="bg-blue-500 text-white rounded p-2 hover:bg-blue-600">Suivant</button>
+            </div>
+
+            <!-- Step 4: Education -->
+            <div class="step hidden" id="step4">
+                <h2 class="text-2xl font-bold border-b-2 border-gray-700 pb-2">Formation</h2>
+                <div id="education-list" class="mb-4">
+                    <div class="education-entry mb-4">
+                        <input type="text" placeholder="École" required class="border border-gray-300 rounded p-2 w-full mb-2">
+                        <input type="text" placeholder="Diplôme" required class="border border-gray-300 rounded p-2 w-full mb-2">
+
+                        <button type="button" class="remove-education bg-red-500 text-white rounded p-2 hover:bg-red-600">Supprimer</button>
+                    </div>
+                </div>
+                <button type="button" id="add-education" class="bg-green-500 text-white rounded p-2 hover:bg-green-600">Ajouter une formation</button>
+                <button type="button" id="prevBtn3" class="bg-gray-500 text-white rounded p-2 hover:bg-gray-600">Précédent</button>
+                <button type="button" id="nextBtn4" class="bg-blue-500 text-white rounded p-2 hover:bg-blue-600">Suivant</button>
+            </div>
+
+            <!-- Step 5: Skills -->
+            <div class="step hidden" id="step5">
+                <h2 class="text-2xl font-bold border-b-2 border-gray-700 pb-2">Compétences</h2>
+                <div id="skills-list" class="mb-4">
+                    <div class="skills-entry mb-4">
+                        <input type="text" placeholder="Compétence" required class="border border-gray-300 rounded p-2 w-full mb-2">
+                        <button type="button" class="remove-skill bg-red-500 text-white rounded p-2 hover:bg-red-600">Supprimer</button>
+                    </div>
+                </div>
+                <button type="button" id="add-skill" class="bg-green-500 text-white rounded p-2 hover:bg-green-600">Ajouter une compétence</button>
+                <button type="button" id="prevBtn4" class="bg-gray-500 text-white rounded p-2 hover:bg-gray-600">Précédent</button>
+                <button type="button" id="nextBtn5" class="bg-blue-500 text-white rounded p-2 hover:bg-blue-600">Suivant</button>
+            </div>
+
+            <!-- Step 6: Languages -->
+            <div class="step hidden" id="step6">
+                <h2 class="text-2xl font-bold border-b-2 border-gray-700 pb-2">Langues</h2>
+                <div id="languages-list" class="mb-4">
+                    <div class="languages-entry mb-4">
+                        <input type="text" placeholder="Langue" required class="border border-gray-300 rounded p-2 w-full mb-2">
+                        <button type="button" class="remove-language bg-red-500 text-white rounded p-2 hover:bg-red-600">Supprimer</button>
+                    </div>
+                </div>
+                <button type="button" id="add-language" class="bg-green-500 text-white rounded p-2 hover:bg-green-600">Ajouter une langue</button>
+                <button type="button" id="prevBtn5" class="bg-gray-500 text-white rounded p-2 hover:bg-gray-600">Précédent</button>
+                <button type="button" id="nextBtn6" class="bg-blue-500 text-white rounded p-2 hover:bg-blue-600">Suivant</button>
+            </div>
+
+            <!-- Step 7: Hobbies -->
+            <div class="step hidden" id="step7">
+                <h2 class="text-2xl font-bold border-b-2 border-gray-700 pb-2">Loisirs</h2>
+                <div id="hobby-list" class="mb-4">
+                    <div class="hobby-entry mb-4">
+                        <input type="text" placeholder="Loisir" required class="border border-gray-300 rounded p-2 w-full mb-2">
+                        <button type="button" class="remove-hobby bg-red-500 text-white rounded p-2 hover:bg-red-600">Supprimer</button>
+                    </div>
+                </div>
+                <button type="button" id="add-hobby" class="bg-green-500 text-white rounded p-2 hover:bg-green-600">Ajouter un loisir</button>
+                <button type="button" id="prevBtn6" class="bg-gray-500 text-white rounded p-2 hover:bg-gray-600">Précédent</button>
+                <button type="button" id="nextBtn7" class="bg-blue-500 text-white rounded p-2 hover:bg-blue-600">Suivant</button>
+            </div>
+
+            <!-- Step 8: Certifications -->
+            <div class="step hidden" id="step8">
+                <h2 class="text-2xl font-bold border-b-2 border-gray-700 pb-2">Certifications</h2>
+                <div id="certifications-list" class="mb-4">
+                    <div class="certifications-entry mb-4">
+                        <input type="text" placeholder="Certification" required class="border border-gray-300 rounded p-2 w-full mb-2">
+                        <button type="button" class="remove-certification bg-red-500 text-white rounded p-2 hover:bg-red-600">Supprimer</button>
+                    </div>
+                </div>
+                <button type="button" id="add-certification" class="bg-green-500 text-white rounded p-2 hover:bg-green-600">Ajouter une certification</button>
+                <button type="button" id="prevBtn7" class="bg-gray-500 text-white rounded p-2 hover:bg-gray-600">Précédent</button>
+                <button type="button" id="finishBtn" class="bg-blue-500 text-white rounded p-2 hover:bg-blue-600">Terminer</button>
+            </div>
+        </div>
+
+        <div class="resume hidden" id="resumeLayout" class="max-w-2xl mx-auto bg-white rounded-lg shadow-md p-6 mt-8">
+            <div class="dw">
+                <button type="button" id="downloadPdf" class="bg-purple-500 text-white rounded p-2 hover:bg-purple-600">Télécharger CV PDF</button>
+                <button type="button" id="backBtn" class="bg-blue-500 text-white rounded p-2 hover:bg-blue-600 ml-4">Retour</button>
+            </div>
+            <h1 id="resumeName" class="text-3xl font-bold mb-2"></h1>
+            <h2 id="resumeRole" class="text-3xl font-bold mb-2"></h1>
+            <h3 class="text-xl mb-4"></h3>
+    
+            <h2 class="text-2xl font-bold border-b-2 border-gray-700 pb-2">Contact Information</h2>
+            <p><strong>Email:</strong> <span id="resumeEmail"></span></p>
+            <p><strong>Téléphone:</strong> <span id="resumePhone"></span></p>
+    
+            <h2 class="text-2xl font-bold border-b-2 border-gray-700 pb-2">Liens</h2>
+            <p><strong>GitHub:</strong> <span id="resumeGithub"></span></p>
+            <p><strong>LinkedIn:</strong> <span id="resumeLinkedin"></span></p>
+    
+            <h2 class="text-2xl font-bold border-b-2 border-gray-700 pb-2">Education</h2>
+            <div id="resumeEducationList"></div>
+    
+            <h2 class="text-2xl font-bold border-b-2 border-gray-700 pb-2">Experience</h2>
+            <div id="resumeExperienceList"></div>
+    
+            <h2 class="text-2xl font-bold border-b-2 border-gray-700 pb-2">Skills</h2>
+            <div id="resumeSkillsList"></div>
+    
+            <h2 class="text-2xl font-bold border-b-2 border-gray-700 pb-2">Languages</h2>
+            <div id="resumeLanguagesList"></div>
+    
+            <h2 class="text-2xl font-bold border-b-2 border-gray-700 pb-2">Hobbies</h2>
+            <div id="resumeHobbiesList"></div>
+    
+            <h2 class="text-2xl font-bold border-b-2 border-gray-700 pb-2">Certifications</h2>
+            <div id="resumeCertificationsList"></div>
+        </div>
+    </div>
+
+    <script src="cvbuilder.js">
+    </script>
+    
+</body>
+
+</html>
