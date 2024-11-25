@@ -1,0 +1,18 @@
+.hidden {
+    display: none;
+}
+.dw {
+    text-align: right; 
+}
+.resume {
+    display: none;
+}
+.resume h1,
+.resume h2 {
+    margin: 0;
+}
+.date-input {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+}
