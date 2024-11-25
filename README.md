@@ -1,4 +1,7 @@
 # CvBuilder
+
+Landing page : https://rayan4-dot.github.io/CvBuilder/
+
 1. Architecture de l'application
 
 Frontend : HTML, CSS (avec Tailwind CSS), JS Vanilla.
