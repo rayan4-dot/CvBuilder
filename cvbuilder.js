@@ -234,4 +234,57 @@ document.getElementById('finishBtn').addEventListener('click', function () {
     return collectedData;
 }
 
+  // Display the collected resume data
+  function displayResume() {
+    const data = collectData();
+    document.getElementById("resumeName").innerText = `${data.personalInfo.name} `; 
+    document.getElementById("resumeRole").innerHTML = `<span style="font-size: 17px;">${data.personalInfo.role}</span>`;
+    document.getElementById("resumeEmail").innerText = data.personalInfo.email;
+    document.getElementById("resumePhone").innerText = data.personalInfo.phone;
+    document.getElementById("resumeGithub").innerText = data.links.github;
+    document.getElementById("resumeLinkedin").innerText = data.links.linkedin;
+
+    const experienceList = document.getElementById("resumeExperienceList");
+    experienceList.innerHTML = '';
+    data.experiences.forEach(exp => {
+        experienceList.innerHTML += `<p>${exp.company}, ${exp.location} (${exp.start} - ${exp.end}): ${exp.description}</p>`;
+    });
+
+    const educationList = document.getElementById("resumeEducationList");
+    educationList.innerHTML = '';
+    data.education.forEach(edu => {
+        educationList.innerHTML += `<p><strong>${edu.school}</strong> - Diplôme: ${edu.degree} (${edu.start} - ${edu.end})</p>`;
+    });
+
+    const skillsList = document.getElementById("resumeSkillsList");
+    skillsList.innerHTML = '';
+    data.skills.forEach(skill => {
+        skillsList.innerHTML += `<p>${skill.skill}</p>`;
+    });
+
+    const languagesList = document.getElementById("resumeLanguagesList");
+    languagesList.innerHTML = '';
+    data.languages.forEach(lang => {
+        languagesList.innerHTML += `<p>${lang.language}</p>`;
+    });
+
+    const hobbiesList = document.getElementById("resumeHobbiesList");
+    hobbiesList.innerHTML = '';
+    data.hobbies.forEach(hobby => {
+        hobbiesList.innerHTML += `<p>${hobby.hobby}</p>`;
+    });
+
+    const certificationsList = document.getElementById("resumeCertificationsList");
+    certificationsList.innerHTML = '';
+    data.certifications.forEach(cert => {
+        certificationsList.innerHTML += `<p>${cert.certification}</p>`;
+    });
+
+    document.getElementById("resumeLayout").style.display = "block";
+    document.getElementById("cv-form").style.display = "none";
+    
+    // show the download button
+    document.getElementById('downloadPdf').classList.remove('hidden');
+}
+
 });
