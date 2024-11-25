@@ -286,5 +286,9 @@ document.getElementById('finishBtn').addEventListener('click', function () {
     // show the download button
     document.getElementById('downloadPdf').classList.remove('hidden');;
 }
-
+  // navigate back to the cv form
+  document.getElementById('backBtn').addEventListener('click', function () {
+    document.getElementById("resumeLayout").style.display = "none"; // when i click, the layout is ba7
+    document.getElementById("cv-form").style.display = "block"; // the form shows up to edit 
+  });
 });
