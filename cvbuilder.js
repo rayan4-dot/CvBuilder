@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function () {
     let currentStep = 0;
     const steps = document.querySelectorAll('.step');
   
-    // Manage navigation between steps
+    //  navigation between steps
     function showStep() {
         steps.forEach((step, index) => {
             step.classList.toggle('hidden', index !== currentStep);
@@ -25,4 +25,29 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     }
+
+      // Navigation buttons
+  document.querySelectorAll('[id^="nextBtn"]').forEach((button) => {
+    button.addEventListener('click', function () {
+        if (validateStep()) {
+            currentStep++;
+            showStep();
+        }
+    });
+});
+
+document.querySelectorAll('[id^="prevBtn"]').forEach((button) => {
+    button.addEventListener('click', function () {
+        currentStep--;
+        showStep();
+    });
+});
+
+document.getElementById('finishBtn').addEventListener('click', function () {
+    if (validateStep()) {
+        collectData();
+        displayResume();
+    }
+});
+
 });
