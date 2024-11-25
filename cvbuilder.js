@@ -50,4 +50,145 @@ document.getElementById('finishBtn').addEventListener('click', function () {
     }
 });
 
+ // Validate input in each step
+ function validateStep() {
+    let isValid = true;
+
+    if (currentStep === 0) {
+      const name = document.getElementById('name').value.trim();
+      const role = document.getElementById('role').value.trim();  
+      const email = document.getElementById('email').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+  
+      // mail regex
+      const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+      // phone regex (+212 701254151)
+      const phoneRegex = /^\+\d{1,3} \d{8,15}$/;
+  
+      if (!name || !role || !email || !phone) {
+          alert("Veuillez remplir tous les champs obligatoires.");
+          isValid = false;
+      } else if (!emailRegex.test(email)) {
+          alert("Veuillez entrer une adresse e-mail valide.");
+          isValid = false;
+      } else if (!phoneRegex.test(phone)) {
+          alert("Essayer d'entrer un numéro de téléphone Marocain.");
+          isValid = false;
+      }
+  }
+
+    if (currentStep === 1) {
+        const jobTitle = document.getElementById('job-title').value.trim();
+        const profileSummary = document.getElementById('profile-summary').value.trim();
+        if (!jobTitle || !profileSummary) {
+            alert("Veuillez remplir le titre du poste et le résumé de profil.");
+            isValid = false;
+        }
+    }
+
+    if (currentStep === 1) {
+      const githubLink = document.getElementById('github-link').value.trim();
+      const linkedinLink = document.getElementById('linkedin-link').value.trim();
+  
+      // regex for URL 
+      const urlRegex = /^(ftp|http|https):\/\/[^ "]+$/;
+  
+      if (!githubLink && !linkedinLink) {
+          alert("Veuillez remplir au moins un lien.");
+          isValid = false;
+      } else {
+          if (githubLink && !urlRegex.test(githubLink)) {
+              alert("Veuillez entrer un lien valide.");
+              isValid = false;
+          }
+          if (linkedinLink && !urlRegex.test(linkedinLink)) {
+              alert("Veuillez entrer un lien valide.");
+              isValid = false;
+          }
+      }
+  }
+
+    if (currentStep === 2) {
+        const experienceEntries = document.querySelectorAll('#experience-list .experience-entry');
+        experienceEntries.forEach(entry => {
+            const company = entry.querySelector('input[type="text"]').value.trim();
+            const location = entry.querySelectorAll('input[type="text"]')[1].value.trim();
+            const startMonth = entry.querySelectorAll('select')[0].value;
+            const startYear = entry.querySelectorAll('input[type="number"]')[0].value.trim();
+            const endMonth = entry.querySelectorAll('select')[1].value;
+            const endYear = entry.querySelectorAll('input[type="number"]')[1].value.trim();
+            const description = entry.querySelector('textarea').value.trim();
+
+            if (!company || !location || !startMonth || !startYear || !endMonth || !endYear || !description) {
+                alert("Veuillez compléter tous les champs d'une expérience professionnelle.");
+                isValid = false;
+            }
+        });
+    }
+
+    if (currentStep === 3) {
+        const educationEntries = document.querySelectorAll('#education-list .education-entry');
+        educationEntries.forEach(entry => {
+            const school = entry.querySelector('input[type="text"]').value.trim();
+            const degree = entry.querySelectorAll('input[type="text"]')[1].value.trim();
+            const startMonth = entry.querySelectorAll('select')[0].value;
+            const startYear = entry.querySelectorAll('input[type="number"]')[0].value.trim();
+            const endMonth = entry.querySelectorAll('select')[1].value;
+            const endYear = entry.querySelectorAll('input[type="number"]')[1].value.trim();
+
+            if (!school || !degree || !startMonth || !startYear || !endMonth || !endYear) {
+                alert("Veuillez compléter tous les champs d'une formation.");
+                isValid = false;
+            }
+        });
+    }
+
+    if (currentStep === 4) {
+        const skillEntries = document.querySelectorAll('#skills-list .skills-entry');
+        if (!Array.from(skillEntries).some(entry => {
+            const skill = entry.querySelector('input[type="text"]').value.trim();
+            return skill;
+        })) {
+            alert("Veuillez ajouter au moins une compétence.");
+            isValid = false;
+        }
+    }
+
+    if (currentStep === 5) {
+        const languageEntries = document.querySelectorAll('#languages-list .languages-entry');
+        if (!Array.from(languageEntries).some(entry => {
+            const language = entry.querySelector('input[type="text"]').value.trim();
+            return language;
+        })) {
+            alert("Veuillez ajouter au moins une langue.");
+            isValid = false;
+        }
+    }
+
+    if (currentStep === 6) {
+        const hobbyEntries = document.querySelectorAll('#hobby-list .hobby-entry');
+        if (!Array.from(hobbyEntries).some(entry => {
+            const hobby = entry.querySelector('input[type="text"]').value.trim();
+            return hobby;
+        })) {
+            alert("Veuillez ajouter au moins un loisir.");
+            isValid = false;
+        }
+    }
+
+    if (currentStep === 7) {
+        const certificationEntries = document.querySelectorAll('#certifications-list .certifications-entry');
+        if (!Array.from(certificationEntries).some(entry => {
+            const certification = entry.querySelector('input[type="text"]').value.trim();
+            return certification;
+        })) {
+            alert("Veuillez ajouter au moins une certification.");
+            isValid = false;
+        }
+    }
+
+    return isValid;
+}
+
+
 });
