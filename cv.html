@@ -120,7 +120,42 @@
                     <div class="education-entry mb-4">
                         <input type="text" placeholder="École" required class="border border-gray-300 rounded p-2 w-full mb-2">
                         <input type="text" placeholder="Diplôme" required class="border border-gray-300 rounded p-2 w-full mb-2">
-
+                        <div class="date-input">
+                            <select class="border border-gray-300 rounded p-2 w-full mb-2" required>
+                                <option value="" disabled selected>Mois Début</option>
+                                <option value="January">Janvier</option>
+                                <option value="February">Février</option>
+                                <option value="March">Mars</option>
+                                <option value="April">Avril</option>
+                                <option value="May">Mai</option>
+                                <option value="June">Juin</option>
+                                <option value="July">Juillet</option>
+                                <option value="August">Août</option>
+                                <option value="September">Septembre</option>
+                                <option value="October">Octobre</option>
+                                <option value="November">Novembre</option>
+                                <option value="December">Décembre</option>
+                            </select>
+                            <input type="number" min="1997" max="2026" placeholder="Année" class="border border-gray-300 rounded p-2 w-full mb-2" required>
+                        </div>
+                        <div class="date-input">
+                            <select class="border border-gray-300 rounded p-2 w-full mb-2" required>
+                                <option value="" disabled selected>Mois Fin</option>
+                                <option value="January">Janvier</option>
+                                <option value="February">Février</option>
+                                <option value="March">Mars</option>
+                                <option value="April">Avril</option>
+                                <option value="May">Mai</option>
+                                <option value="June">Juin</option>
+                                <option value="July">Juillet</option>
+                                <option value="August">Août</option>
+                                <option value="September">Septembre</option>
+                                <option value="October">Octobre</option>
+                                <option value="November">Novembre</option>
+                                <option value="December">Décembre</option>
+                            </select>
+                            <input type="number" min="1997" max="2026" placeholder="Année" class="border border-gray-300 rounded p-2 w-full mb-2" required>
+                        </div>
                         <button type="button" class="remove-education bg-red-500 text-white rounded p-2 hover:bg-red-600">Supprimer</button>
                     </div>
                 </div>
