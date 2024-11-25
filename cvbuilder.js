@@ -190,5 +190,48 @@ document.getElementById('finishBtn').addEventListener('click', function () {
     return isValid;
 }
 
+ // Collect data from the form
+ function collectData() {
+    const collectedData = {
+        personalInfo: {
+            name: document.getElementById('name').value,
+            role: document.getElementById('role').value,
+            email: document.getElementById('email').value,
+            phone: document.getElementById('phone').value,
+            jobTitle: document.getElementById('job-title').value,
+            profileSummary: document.getElementById('profile-summary').value,
+        },
+        links: {
+            github: document.getElementById('github-link').value,
+            linkedin: document.getElementById('linkedin-link').value
+        },
+        experiences: Array.from(document.querySelectorAll('#experience-list .experience-entry')).map(entry => ({
+            company: entry.querySelector('input[type="text"]').value,
+            location: entry.querySelectorAll('input[type="text"]')[1].value,
+            start: `${entry.querySelectorAll('select')[0].value} ${entry.querySelectorAll('input[type="number"]')[0].value}`,
+            end: `${entry.querySelectorAll('select')[1].value} ${entry.querySelectorAll('input[type="number"]')[1].value}`,
+            description: entry.querySelector('textarea').value,
+        })),
+        education: Array.from(document.querySelectorAll('#education-list .education-entry')).map(entry => ({
+            school: entry.querySelector('input[type="text"]').value,
+            degree: entry.querySelectorAll('input[type="text"]')[1].value,
+            start: `${entry.querySelectorAll('select')[0].value} ${entry.querySelectorAll('input[type="number"]')[0].value}`,
+            end: `${entry.querySelectorAll('select')[1].value} ${entry.querySelectorAll('input[type="number"]')[1].value}`,
+        })),
+        skills: Array.from(document.querySelectorAll('#skills-list .skills-entry')).map(entry => ({
+            skill: entry.querySelector('input[type="text"]').value,
+        })),
+        languages: Array.from(document.querySelectorAll('#languages-list .languages-entry')).map(entry => ({
+            language: entry.querySelector('input[type="text"]').value,
+        })),
+        hobbies: Array.from(document.querySelectorAll('#hobby-list .hobby-entry')).map(entry => ({
+            hobby: entry.querySelector('input[type="text"]').value,
+        })),
+        certifications: Array.from(document.querySelectorAll('#certifications-list .certifications-entry')).map(entry => ({
+            certification: entry.querySelector('input[type="text"]').value,
+        })),
+    };
+    return collectedData;
+}
 
 });
