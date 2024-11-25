@@ -1,21 +1,28 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const addPhotoText = document.getElementById('addPhotoText');
-    const fileInput = document.getElementById('photo');
-    const imageNameDiv = document.getElementById('imageName');
-
-    addPhotoText.addEventListener('click', function () {
-        fileInput.click(); // opens the file picker
-    });
-
-    //if file is selected, display the file name below the input
-    function previewImage() {
-        const file = fileInput.files[0];
-
-        if (file) {
-            imageNameDiv.textContent = 'Selected file: ' + file.name; 
-        } else {
-            imageNameDiv.textContent = ''; // clear the file name if no file is selected
-        }
+    let currentStep = 0;
+    const steps = document.querySelectorAll('.step');
+  
+    // Manage navigation between steps
+    function showStep() {
+        steps.forEach((step, index) => {
+            step.classList.toggle('hidden', index !== currentStep);
+        });
+        updateProgressBar();
     }
-    window.previewImage = previewImage;
+  
+    function updateProgressBar() {
+        const indicators = document.querySelectorAll('[id^="step-"]');
+        indicators.forEach((indicator, index) => {
+            if (index < currentStep) {
+                indicator.classList.add('bg-green-600');
+                indicator.classList.remove('bg-blue-600');
+            } else if (index === currentStep) {
+                indicator.classList.add('bg-blue-600');
+                indicator.classList.remove('bg-green-600');
+            } else {
+                indicator.classList.remove('bg-green-600', 'bg-blue-600');
+                indicator.classList.add('bg-gray-300');
+            }
+        });
+    }
 });
