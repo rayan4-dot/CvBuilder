@@ -284,7 +284,7 @@ document.getElementById('finishBtn').addEventListener('click', function () {
     document.getElementById("cv-form").style.display = "none";
     
     // show the download button
-    document.getElementById('downloadPdf').classList.remove('hidden');
+    document.getElementById('downloadPdf').classList.remove('hidden');;
 }
 
 });
